@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Know Battery Level of System</title>
+<style>
+#batteryLevel{
+  width:200px;
+  height:100px;
+  background:green;
+  border:1px soild green;
+  color: white;
+  font-size:16px;
+  padding: 16px 16px;
+}
+</style>
+<script>
+navigator.getBattery().then(function(battery) {
+debugger;
+  console.log(battery.level);
+  // ... and any subsequent updates.
+  battery.onlevelchange = function() {
+    document.getElementById("batterySpan").innerHTML = this.level;
+  };
+});
+</script>
+</head>
+<body>
+<div id="batteryLevel">
+<!-- <input id="batteryInput" type="text"> -->
+Present battery Level: <span id="batterySpan"></span>
+
+</div>
+</body>
+</html>
